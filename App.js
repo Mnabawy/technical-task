@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   FlatList,
@@ -19,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+
 import ExploreItem from './src/components/exploreItem';
 import Header from './src/components/header';
 import SearchInput from './src/components/searchInput';
@@ -33,26 +26,15 @@ const App = () => {
       {/* header */}
       <Header />
       {/* search input */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginVertical: 15,
-          alignItems: 'center',
-        }}>
+      <View style={styles.serchConatiner}>
         <SearchInput />
         <Icon name="shoppingcart" size={30} color={COLORS.black} />
       </View>
 
       {/* explore section */}
-      {/* <View style={{flex: 1}}> */}
       <Text style={styles.title}>Explore</Text>
       <FlatList
-        style={{
-          height: 200,
-          marginTop: 0,
-          paddingTop: 0,
-        }}
+        style={styles.exploreList}
         contentContainerStyle={{
           alignItems: 'flex-start',
         }}
@@ -62,10 +44,8 @@ const App = () => {
         renderItem={ExploreItem}
         keyExtractor={item => item.id}
       />
-      {/* </View> */}
 
       {/* Best Selling section */}
-      {/* <View style={{flex: 1}}> */}
       <Text style={styles.title}>Best Selling</Text>
       <FlatList
         style={{
@@ -79,7 +59,6 @@ const App = () => {
         data={DUMMYDATA}
         renderItem={BestSellingItem}
       />
-      {/* </View> */}
     </SafeAreaView>
   );
 };
@@ -90,6 +69,17 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.lighterGray,
     paddingTop: 15,
     paddingHorizontal: 20,
+  },
+  serchConatiner: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 15,
+    alignItems: 'center',
+  },
+  exploreList: {
+    height: 200,
+    marginTop: 0,
+    paddingTop: 0,
   },
   title: {
     fontSize: 24,
